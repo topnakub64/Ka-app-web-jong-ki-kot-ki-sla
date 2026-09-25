@@ -2,30 +2,89 @@
 <html lang="th">
 <head>
     <base target="_top">
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- สำคัญมาก -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <title>คำทำร้อง</title>
 
     <style>
-        html, body {
+        /* Reset ทุกอย่าง */
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            height: 100%;
+        }
+
+        html,
+        body {
             width: 100%;
+            height: 100%;
+            min-width: 100%;
+            min-height: 100%;
+
+            overflow: hidden;
+
+            margin: 0;
+            padding: 0;
+        }
+
+        /* กล่อง iframe */
+        .iframe-container {
+            position: fixed;
+            inset: 0;
+
+            width: 100vw;
+            height: 100vh;
+
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* หน้าเว็บด้านใน */
+        .iframe-container iframe {
+            display: block;
+
+            width: 100%;
+            height: 100%;
+
+            min-width: 100%;
+            min-height: 100%;
+
+            border: none;
+            margin: 0;
+            padding: 0;
+
             overflow: hidden;
         }
 
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
+        /* รองรับมือถือที่มี address bar */
+        @supports (height: 100dvh) {
+            .iframe-container {
+                height: 100dvh;
+            }
+
+            .iframe-container iframe {
+                height: 100dvh;
+            }
         }
     </style>
 </head>
 
 <body>
-    <iframe src="https://script.google.com/macros/s/AKfycbww6u615_mTKV1yuS9fdf1rbkWq1JVGZWQ0DR6zp_LOTiNyDQuwfT3HWYYz3lZl6V5hPA/exec"></iframe>
+
+    <div class="iframe-container">
+        <iframe
+            src="https://script.google.com/macros/s/AKfycbww6u615_mTKV1yuS9fdf1rbkWq1JVGZWQ0DR6zp_LOTiNyDQuwfT3HWYYz3lZl6V5hPA/exec"
+            frameborder="0"
+            scrolling="no"
+            allowfullscreen>
+        </iframe>
+    </div>
+
 </body>
 </html>
